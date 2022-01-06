@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout-template}">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorate="~{layout-template}">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -34,15 +38,9 @@
           </div>
           <div class="card mb-3">
             <div class="card-header">
-              <span class="text-primary me-4"
-                ><i class="bi-hand-thumbs-up-fill"></i> 500</span
-              >
-              <span class="text-secondary me-4" alt="Ответов"
-                ><i class="bi-reply-fill"></i> 5</span
-              >
-              <span class="text-muted" alt="Просмотров"
-                ><i class="bi-eye-fill"></i> 300</span
-              >
+              <span class="text-primary me-4"><i class="bi-hand-thumbs-up-fill"></i> 500</span>
+              <span class="text-secondary me-4"><i class="bi-reply-fill"></i> 5</span>
+              <span class="text-muted"><i class="bi-eye-fill"></i> 300</span>
             </div>
             <div class="card-body">
               <p class="card-text">
