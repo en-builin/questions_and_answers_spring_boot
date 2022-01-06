@@ -50,4 +50,8 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return !user.getState().equals(User.State.DELETED);
     }
+
+    public String getFullUsername() {
+        return user.getName();
+    }
 }
