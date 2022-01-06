@@ -1,4 +1,6 @@
-package en.builin.qna.utlis;
+package en.builin.qna.security;
+
+import en.builin.qna.utlis.WebUtils;
 
 public class SecurityUtils {
 
@@ -13,12 +15,12 @@ public class SecurityUtils {
     };
 
     public static final String[] ADMIN_URLS = {
-//            "/users",
+            "/users"
 //            "/projects"
     };
 
     public static final String[] MODERATOR_URLS = {
-//            "/users",
+            "/users"
 //            "/projects"
     };
 

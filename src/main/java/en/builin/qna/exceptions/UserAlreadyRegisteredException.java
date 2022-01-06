@@ -1,4 +1,4 @@
-package en.builin.qna.security.exceptions;
+package en.builin.qna.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

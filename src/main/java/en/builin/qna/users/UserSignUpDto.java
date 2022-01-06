@@ -17,5 +17,6 @@ public class UserSignUpDto {
     //TODO Имя не занято - сделать валидатор
     private String name;
     @NotBlank
+    //TODO минимальная длина = 6
     private String password;
 }

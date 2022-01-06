@@ -1,6 +1,6 @@
 package en.builin.qna.security;
 
-import en.builin.qna.security.exceptions.UserAlreadyRegisteredException;
+import en.builin.qna.exceptions.UserAlreadyRegisteredException;
 import en.builin.qna.users.User;
 import en.builin.qna.users.UserSignUpDto;
 import en.builin.qna.users.UsersRepository;
@@ -20,13 +20,14 @@ public class SignUpServiceImpl implements SignUpService {
     @Override
     public void signUp(UserSignUpDto dto) {
 
-        if (usersRepository.findById(dto.getEmail()).isPresent()) {
+        if (usersRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new UserAlreadyRegisteredException();
         }
 
         User user = ModelMapperUtils.map(dto, User.class);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setState(User.State.NOT_CONFIRMED);
+        user.setRole(User.Role.USER);
 
         usersRepository.save(user);
 
