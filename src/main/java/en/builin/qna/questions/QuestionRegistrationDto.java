@@ -1,20 +1,18 @@
 package en.builin.qna.questions;
 
 import en.builin.qna.topics.Topic;
-import en.builin.qna.users.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
-public class QuestionDto {
+public class QuestionRegistrationDto {
 
-    private Long id;
-    private User author;
+    @NotBlank
+    // TODO Не работает валидатор
     private Topic topic;
+    @NotBlank
     private String text;
-    private Instant createdAt;
-    private Instant updatedAt;
 }

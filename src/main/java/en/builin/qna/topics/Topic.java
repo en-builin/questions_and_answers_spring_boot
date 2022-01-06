@@ -1,4 +1,4 @@
-package en.builin.qna.categories;
+package en.builin.qna.topics;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,21 +10,20 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Table(name = "categories")
+@Table(name = "topics")
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+public class Topic {
+
+    // TODO сделать классы DTO, repository, service
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     @Id
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "parent_id", nullable = false)
-    private Category parent;
     @Column(length = 150)
     private String name;
     @CreationTimestamp

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-@RequiredArgsConstructor()
+@RequiredArgsConstructor
 @Controller
 @RequestMapping(WebUtils.URL_SIGN_UP)
 public class SignUpController {
