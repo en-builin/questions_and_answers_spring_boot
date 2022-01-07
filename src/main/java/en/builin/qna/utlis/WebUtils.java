@@ -9,6 +9,7 @@ public class WebUtils {
     public static final String URL_PROFILE = "/profile";
     public static final String URL_QUESTIONS = "/q";
     public static final String URL_ADD_QUESTION = "/add-question";
+    public static final String URL_TOPICS = "/t";
 
     private WebUtils() {}
 }

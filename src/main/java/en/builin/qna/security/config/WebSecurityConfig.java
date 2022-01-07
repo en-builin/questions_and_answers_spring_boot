@@ -44,11 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
                 http
                         .authorizeRequests()
+                        .antMatchers(SecurityUtils.PERMITED_URLS).permitAll()
                         .antMatchers(SecurityUtils.AUTHENTICATED_URLS).authenticated()
                         .antMatchers(SecurityUtils.ADMIN_URLS).hasAuthority("ADMIN")
                         .antMatchers(SecurityUtils.MODERATOR_URLS).hasAuthority("MODERATOR")
-                        .antMatchers("/registration").permitAll()
-                        .anyRequest().permitAll()
+                        .anyRequest().denyAll()
                         .and()
                 .formLogin()
 //                        .loginPage(WebUtils.URL_INDEX)

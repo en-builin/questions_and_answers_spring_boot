@@ -1,6 +1,7 @@
 package en.builin.qna.utlis;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.modelmapper.convention.MatchingStrategies;
 
 import java.util.Collection;
@@ -19,7 +20,13 @@ public class ModelMapperUtils {
     static {
         modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
-//        modelMapper.typeMap(UserSignUpDto.class, User.class).addMappings(m -> m.skip(UserSignUpDto::getId));
+//        modelMapper.addConverter(new AbstractConverter<Instant, Timestamp>() {
+//            @Override
+//            protected Timestamp convert(Instant source) {
+//                return Timestamp.from(source);
+//            }
+//        });
+//        modelMapper.typeMap(Instant.class, Timestamp.class).addMappings(m -> m.skip(UserSignUpDto::getId));
     }
 
     /**
