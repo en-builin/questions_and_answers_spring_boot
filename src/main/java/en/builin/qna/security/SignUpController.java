@@ -40,6 +40,7 @@ public class SignUpController {
         }
 
         signUpService.signUp(userSignUpDto);
+        //TODO сделать автологин после регистрации
         return "redirect:" + WebUtils.URL_INDEX;
     }
 

@@ -4,9 +4,13 @@
 
 package en.builin.qna.questions;
 
+import en.builin.qna.security.config.UserDetailsImpl;
+import en.builin.qna.topics.TopicDto;
+import en.builin.qna.topics.TopicsService;
 import en.builin.qna.utlis.ModelMapperUtils;
 import en.builin.qna.utlis.WebUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,15 +24,19 @@ import javax.validation.Valid;
 public class QuestionsController {
 
     private final QuestionsService questionsService;
+    private final TopicsService topicsService;
 
     @PostMapping(WebUtils.URL_QUESTIONS)
-    public String addQuestion(@Valid QuestionRegistrationDto questionRegistrationDto, BindingResult result, Model model) {
+    public String addQuestion(Authentication authentication,
+                              @Valid QuestionRegistrationDto questionRegistrationDto, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
+            model.addAttribute("topicsDto", ModelMapperUtils.mapAll(topicsService.getTopics(), TopicDto.class));
             return "add-question";
         }
 
         Question question = ModelMapperUtils.map(questionRegistrationDto, Question.class);
+        question.setAuthor(((UserDetailsImpl) authentication.getPrincipal()).getUser());
         questionsService.addQuestion(question);
 
         return "redirect:" + WebUtils.URL_QUESTIONS + "/" + question.getId();
@@ -38,6 +46,7 @@ public class QuestionsController {
     public String showAddQuestion(Model model) {
 
         model.addAttribute("questionRegistrationDto", new QuestionRegistrationDto());
+        model.addAttribute("topicsDto", ModelMapperUtils.mapAll(topicsService.getTopics(), TopicDto.class));
         return "add-question";
     }
 

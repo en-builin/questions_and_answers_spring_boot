@@ -5,14 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
 public class QuestionRegistrationDto {
 
-    @NotBlank
+    @NotNull(message = "должно быть заполнено")
     // TODO Не работает валидатор
     private Topic topic;
-    @NotBlank
+    @NotBlank(message = "должно быть заполнено")
     private String text;
 }

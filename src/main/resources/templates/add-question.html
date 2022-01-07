@@ -37,7 +37,7 @@
                     <div class="col-sm-10">
                         <select class="form-control" id="topic" th:field="*{topic}">
                             <option value=""></option>
-                            <option value="1" th:each="topicDto : ${topicDtoList}" th:value="${topicDto.id}" th:text="${topicDto.name}">Тема 1</option>
+                            <option value="1" th:each="topicDto : ${topicsDto}" th:value="${topicDto.id}" th:text="${topicDto.name}">Тема 1</option>
                         </select>
                         <span th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
                     </div>
