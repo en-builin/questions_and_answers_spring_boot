@@ -18,7 +18,7 @@
 <body>
 
 <main class="container">
-    <div class="mb-5" layout:fragment="content-title">
+    <div class="mb-5" layout:fragment="content-title" th:if="${isIndexPage}">
         <h1>
             Вопросы на знание механизмов платформы 1С:Предприятие с ответами для
             подготовки к собеседованиям и проверки своих знаний
@@ -27,8 +27,7 @@
     <div class="row">
         <div class="col-lg-8 mb-4" layout:fragment="content">
             <div class="mb-3">
-                <a class="btn btn-primary btn-lg" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
-                   data-bs-content="Необходимо авторизоваться" href="#" th:href="@{/add-question}"><i class="bi-plus-circle"></i> Добавить
+                <a class="btn btn-primary btn-lg" href="#" th:href="@{/add-question}"><i class="bi-plus-circle"></i> Добавить
                     вопрос</a>
             </div>
             <div class="card mb-3">
@@ -52,15 +51,9 @@
 
             <div class="card mb-3">
                 <div class="card-header">
-              <span class="text-primary me-4"
-              ><i class="bi-hand-thumbs-up-fill"></i> 500</span
-              >
-                    <span class="text-secondary me-4" alt="Ответов"
-                    ><i class="bi-reply-fill"></i> 5</span
-                    >
-                    <span class="text-muted" alt="Просмотров"
-                    ><i class="bi-eye-fill"></i> 300</span
-                    >
+                    <span class="text-primary me-4"><i class="bi-hand-thumbs-up-fill"></i> 500</span>
+                    <span class="text-secondary me-4"><i class="bi-reply-fill"></i> 5</span>
+                    <span class="text-muted"><i class="bi-eye-fill"></i> 300</span>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
@@ -77,15 +70,9 @@
 
             <div class="card mb-3">
                 <div class="card-header">
-              <span class="text-primary me-4"
-              ><i class="bi-hand-thumbs-up-fill"></i> 500</span
-              >
-                    <span class="text-secondary me-4" alt="Ответов"
-                    ><i class="bi-reply-fill"></i> 5</span
-                    >
-                    <span class="text-muted" alt="Просмотров"
-                    ><i class="bi-eye-fill"></i> 300</span
-                    >
+                    <span class="text-primary me-4"><i class="bi-hand-thumbs-up-fill"></i> 500</span>
+                    <span class="text-secondary me-4"><i class="bi-reply-fill"></i> 5</span>
+                    <span class="text-muted"><i class="bi-eye-fill"></i> 300</span>
                 </div>
                 <div class="card-body">
                     <p class="card-text">

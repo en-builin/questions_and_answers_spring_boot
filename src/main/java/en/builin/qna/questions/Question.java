@@ -36,4 +36,5 @@ public class Question {
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
+    private Boolean deleted;
 }
