@@ -15,4 +15,6 @@ public interface QuestionsService {
     List<Question> findQuestionsByAll();
 
     String getQuestionUrlName(Question question);
+
+    Integer getPagesTotalCount();
 }

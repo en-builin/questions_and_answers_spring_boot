@@ -11,4 +11,6 @@ public interface QuestionsRepository extends JpaRepository<Question, Long> {
     List<Question> findByDeletedIsNullOrderByCreatedAtDesc(Pageable pageable);
 
     List<Question> findByDeletedIsNull(Sort sort);
+
+    Long countByDeletedIsNull();
 }

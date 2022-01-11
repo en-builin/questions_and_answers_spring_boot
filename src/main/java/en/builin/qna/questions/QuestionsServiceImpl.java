@@ -16,7 +16,7 @@ import java.util.List;
 public class QuestionsServiceImpl implements QuestionsService {
 
     private final QuestionsRepository questionsRepository;
-    private static final int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 5;
 
     @Override
     public void addQuestion(Question question) {
@@ -38,5 +38,10 @@ public class QuestionsServiceImpl implements QuestionsService {
     public String getQuestionUrlName(Question question) {
         // TODO привести к транслитерации https://ru.stackoverflow.com/questions/633355/
         return question.getId().toString();
+    }
+
+    @Override
+    public Integer getPagesTotalCount() {
+        return (int) Math.ceil((double) questionsRepository.countByDeletedIsNull() / PAGE_SIZE);
     }
 }

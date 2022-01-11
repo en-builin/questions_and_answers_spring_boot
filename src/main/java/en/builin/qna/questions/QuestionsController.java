@@ -58,6 +58,7 @@ public class QuestionsController {
         model.addAttribute("questionsDto",
                 ModelMapperUtils.mapAll(questionsService.findQuestionsByPage(pageNumber), QuestionDto.class));
         model.addAttribute("pageNumber", pageNumber);
+        model.addAttribute("pageTotal", questionsService.getPagesTotalCount());
 
         return "questions";
     }

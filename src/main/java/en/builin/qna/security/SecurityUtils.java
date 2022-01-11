@@ -13,7 +13,8 @@ public class SecurityUtils {
             WebUtils.URL_SIGN_IN,
             WebUtils.URL_SIGN_UP,
             WebUtils.URL_QUESTION_PAGE + "/**",
-            WebUtils.URL_QUESTIONS
+            WebUtils.URL_QUESTIONS,
+            WebUtils.URL_QUESTIONS + "/**"
     };
 
     public static final String[] AUTHENTICATED_URLS = {
