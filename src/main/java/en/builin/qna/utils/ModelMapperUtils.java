@@ -1,4 +1,4 @@
-package en.builin.qna.utlis;
+package en.builin.qna.utils;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -20,13 +20,6 @@ public class ModelMapperUtils {
     static {
         modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
-//        modelMapper.addConverter(new AbstractConverter<Instant, Timestamp>() {
-//            @Override
-//            protected Timestamp convert(Instant source) {
-//                return Timestamp.from(source);
-//            }
-//        });
-//        modelMapper.typeMap(Instant.class, Timestamp.class).addMappings(m -> m.skip(UserSignUpDto::getId));
     }
 
     /**

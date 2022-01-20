@@ -76,21 +76,18 @@
             <ul class="list-group list-group-flush mb-4">
                 <li class="list-group-item h5 mb-0">Разработка 1C</li>
                 <div class="list-group list-group-flush ps-3">
+                    <!--/*-->
+                    <!--                    <a class="list-group-item d-flex justify-content-between align-items-center"-->
+                    <!--                       href="#">Регистры накопления<span class="badge bg-secondary rounded-pill">14</span></a>-->
+                    <!--*/-->
+                    <th:block  th:each="topicDto : ${topicsDto}">
                     <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#">Регистры накопления<span class="badge bg-secondary rounded-pill">14</span></a>
-                    <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#">Регистры бухгалтерии<span class="badge bg-secondary rounded-pill">14</span></a>
-                    <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#">Регистры расчета<span class="badge bg-secondary rounded-pill">14</span></a>
-                    <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#">Интеграции и обмен данными<span class="badge bg-secondary rounded-pill">14</span></a>
-                    <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#">Модуль объекта<span class="badge bg-secondary rounded-pill">14</span></a>
-                    <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#">Формы и модули форм<span class="badge bg-secondary rounded-pill">14</span></a>
+                       href="#" th:href="${topicDto.url}" th:text="${topicDto.name}">Регистры бухгалтерии</a>
+                    </th:block>
                 </div>
             </ul>
 
+<!--/*-->
             <h5>Тэги</h5>
             <div>
                 <a href="#" class="btn btn-outline-secondary m-1">XDTO</a>
@@ -98,6 +95,7 @@
                 <a href="#" class="btn btn-outline-secondary m-1">Регистры накопления</a>
                 <a href="#" class="btn btn-outline-secondary m-1">Хранилище значений</a>
             </div>
+<!--*/-->
         </div>
     </div>
 </main>

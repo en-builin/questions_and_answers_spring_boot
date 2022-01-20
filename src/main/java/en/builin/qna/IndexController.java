@@ -1,7 +1,7 @@
 package en.builin.qna;
 
 import en.builin.qna.questions.QuestionsController;
-import en.builin.qna.utlis.WebUtils;
+import en.builin.qna.utils.WebUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

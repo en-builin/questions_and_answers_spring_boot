@@ -1,6 +1,6 @@
 package en.builin.qna.security;
 
-import en.builin.qna.utlis.WebUtils;
+import en.builin.qna.utils.WebUtils;
 
 public class SecurityUtils {
 

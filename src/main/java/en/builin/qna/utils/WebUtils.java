@@ -1,4 +1,4 @@
-package en.builin.qna.utlis;
+package en.builin.qna.utils;
 
 public class WebUtils {
 
@@ -13,4 +13,18 @@ public class WebUtils {
     public static final String URL_TOPICS = "/t";
 
     private WebUtils() {}
+
+    public static String getUrlTitleById(String name, Long id) {
+        if (name == null || name.isBlank()) {
+            return id.toString();
+        } else {
+            return TransliteratorUtils.transliterate(name)
+                    .toLowerCase()
+                    .trim()
+                    .replaceAll("[^a-zA-ZА-Яа-я0-9 ]", "")
+                    .replace(" ", "-")
+                    + "-"
+                    + id;
+        }
+    }
 }

@@ -23,7 +23,7 @@
         <div class="col-lg-8 mb-4" layout:fragment="content">
             <h3>Регистрация нового пользователя</h3>
             <p class="text-muted">Все поля обязательны для заполнения.</p>
-            <form action="#" th:action="@{/registration}" th:object="${userSignUpDto}" method="post">
+            <form action="#" th:action="@{/registration}" th:object="${userCreateDto}" method="post">
                 <div class="mb-3 row">
                     <label for="name" class="col-sm-2 col-form-label">Имя</label>
                     <div class="col-sm-10">

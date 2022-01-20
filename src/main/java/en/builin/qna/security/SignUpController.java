@@ -1,7 +1,7 @@
 package en.builin.qna.security;
 
-import en.builin.qna.users.UserSignUpDto;
-import en.builin.qna.utlis.WebUtils;
+import en.builin.qna.users.UserCreateDto;
+import en.builin.qna.utils.WebUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -27,19 +27,19 @@ public class SignUpController {
             return "redirect:" + WebUtils.URL_PROFILE;
         }
 
-        model.addAttribute("userSignUpDto", new UserSignUpDto());
+        model.addAttribute("userCreateDto", new UserCreateDto());
         return "sign-up";
     }
 
     @PostMapping
-    public String signUp(@Valid UserSignUpDto userSignUpDto, BindingResult result, Model model) {
+    public String signUp(@Valid UserCreateDto userCreateDto, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
             //TODO сделать оформление ошибок заполнения в макете sign-up.html
             return "sign-up";
         }
 
-        signUpService.signUp(userSignUpDto);
+        signUpService.signUp(userCreateDto);
         //TODO сделать автологин после регистрации
         return "redirect:" + WebUtils.URL_INDEX;
     }

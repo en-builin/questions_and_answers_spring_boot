@@ -1,7 +1,7 @@
 package en.builin.qna.security.config;
 
 import en.builin.qna.security.SecurityUtils;
-import en.builin.qna.utlis.WebUtils;
+import en.builin.qna.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

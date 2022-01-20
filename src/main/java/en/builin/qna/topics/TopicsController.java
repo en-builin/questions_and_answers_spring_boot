@@ -4,8 +4,7 @@
 
 package en.builin.qna.topics;
 
-import en.builin.qna.utlis.ModelMapperUtils;
-import en.builin.qna.utlis.WebUtils;
+import en.builin.qna.utils.WebUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TopicsController {
 
     private final TopicsService topicsService;
+    private final TopicsMapper topicsMapper;
 
     @GetMapping
     public String getTopicsPage(Model model) {
-        model.addAttribute("topicsDto",
-                ModelMapperUtils.mapAll(topicsService.getTopics(), TopicDto.class));
+        model.addAttribute("topicsDto", topicsMapper.toDto(topicsService.getTopics()));
         return "topics";
     }
 
@@ -38,10 +37,11 @@ public class TopicsController {
     public String saveTopic(TopicDto topicDto) {
         if (topicDto.getId() != null) {
             Topic topic = topicsService.getTopicById(topicDto.getId());
-            topic.setName(topicDto.getName());
+            //topic.setName(topicDto.getName());
+            topicsMapper.fromDto(topicDto, topic);
             topicsService.saveTopic(topic);
         } else {
-            topicsService.saveTopic(ModelMapperUtils.map(topicDto, Topic.class));
+            topicsService.saveTopic(topicsMapper.fromDto(topicDto));
         }
         return "redirect:" + WebUtils.URL_TOPICS;
     }

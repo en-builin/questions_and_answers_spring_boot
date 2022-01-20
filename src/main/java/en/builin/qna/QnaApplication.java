@@ -27,6 +27,13 @@ public class QnaApplication {
         return new LayoutDialect();
     }
 
+//    @Bean
+//    public ModelMapper modelMapper() {
+//        ModelMapper modelMapper = new ModelMapper();
+//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
+//        return modelMapper;
+//    }
+//
     public static void main(String[] args) {
         SpringApplication.run(QnaApplication.class, args);
     }

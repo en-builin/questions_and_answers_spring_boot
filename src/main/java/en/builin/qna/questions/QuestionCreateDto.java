@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
-public class QuestionRegistrationDto {
+public class QuestionCreateDto {
 
     @NotNull(message = "должно быть заполнено")
     // TODO Не работает валидатор
