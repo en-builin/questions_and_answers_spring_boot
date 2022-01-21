@@ -4,49 +4,21 @@
 
 package en.builin.qna.questions;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Component
-public class QuestionsMapper {
+public interface QuestionsMapper {
 
-    private final ModelMapper modelMapper;
+    QuestionDto toDto(Question question);
 
-    public QuestionsMapper() {
-        modelMapper = new ModelMapper();
-    }
+    QuestionDto toDto(Question question, QuestionDto questionDto);
 
-    public QuestionDto toDto(Question question) {
-        return modelMapper.map(question, QuestionDto.class);
-    }
+    List<QuestionDto> toDto(List<Question> questions);
 
-    public QuestionDto toDto(Question question, QuestionDto questionDto) {
-        modelMapper.map(question, questionDto);
-        return questionDto;
-    }
+    Question fromDto(QuestionDto questionDto);
 
-    public List<QuestionDto> toDto(List<Question> questions) {
-        return questions.stream().map(this::toDto).collect(Collectors.toList());
-    }
+    Question fromDto(QuestionDto questionDto, Question question);
 
-    public Question fromDto(QuestionDto questionDto) {
-        return modelMapper.map(questionDto, Question.class);
-    }
+    List<Question> fromDto(List<QuestionDto> questions);
 
-    public Question fromDto(QuestionDto questionDto, Question question) {
-        modelMapper.map(questionDto, question);
-        return question;
-    }
-
-    public List<Question> fromDto(List<QuestionDto> questions) {
-        return questions.stream().map(this::fromDto).collect(Collectors.toList());
-    }
-
-    public Question fromDto(QuestionCreateDto questionCreateDto) {
-        return modelMapper.map(questionCreateDto, Question.class);
-    }
-
+    Question fromDto(QuestionCreateDto questionCreateDto);
 }

@@ -18,9 +18,6 @@ public class IndexController {
     @GetMapping
     public String getIndexPage(Model model) {
 
-//        model.addAttribute("isIndexPage", true);
-//
-//        return "index";
         return questionsController.showQuestionsPage(1, model);
     }
 }
