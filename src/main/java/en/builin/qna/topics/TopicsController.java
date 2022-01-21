@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(WebUtils.URL_TOPICS)
+@RequestMapping(WebUtils.URL_EDIT_TOPICS)
 public class TopicsController {
 
     private final TopicsService topicsService;
@@ -37,7 +37,6 @@ public class TopicsController {
     public String saveTopic(TopicDto topicDto) {
         if (topicDto.getId() != null) {
             Topic topic = topicsService.getTopicById(topicDto.getId());
-            //topic.setName(topicDto.getName());
             topicsMapper.fromDto(topicDto, topic);
             topicsService.saveTopic(topic);
         } else {

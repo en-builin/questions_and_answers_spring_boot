@@ -4,6 +4,7 @@
 
 package en.builin.qna.questions;
 
+import en.builin.qna.topics.Topic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -26,6 +27,13 @@ public class QuestionsServiceImpl implements QuestionsService {
     @Override
     public List<Question> findQuestionsByPage(int pageNumber) {
         return questionsRepository.findByDeletedIsNullOrderByCreatedAtDesc(
+                Pageable.ofSize(PAGE_SIZE).withPage(pageNumber - 1));
+    }
+
+    @Override
+    public List<Question> findQuestionsByTopicAndPage(Topic topic, int pageNumber) {
+        return questionsRepository.findByTopicAndDeletedIsNullOrderByCreatedAtDesc(
+                topic,
                 Pageable.ofSize(PAGE_SIZE).withPage(pageNumber - 1));
     }
 

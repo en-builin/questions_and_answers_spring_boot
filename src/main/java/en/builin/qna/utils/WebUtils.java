@@ -11,6 +11,7 @@ public class WebUtils {
     public static final String URL_QUESTION_PAGE = "/q";
     public static final String URL_ADD_QUESTION = "/add-question";
     public static final String URL_TOPICS = "/t";
+    public static final String URL_EDIT_TOPICS = "/edit-topics";
 
     private WebUtils() {}
 
@@ -26,5 +27,10 @@ public class WebUtils {
                     + "-"
                     + id;
         }
+    }
+
+    public static Long getIdFromUrl(String topicUrlId) {
+        String[] urlParts = topicUrlId.split("-");
+        return Long.valueOf(urlParts[urlParts.length - 1]);
     }
 }

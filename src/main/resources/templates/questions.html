@@ -60,13 +60,13 @@
             <nav>
                 <ul class="pagination">
                     <li th:if="${pageNumber == 1}" class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"> &laquo; </a></li>
-                    <li th:if="${pageNumber != 1}" class="page-item"><a class="page-link" href="#"  aria-label="Previous" th:href="@{/questions/(page=${pageNumber}-1)}"> &laquo; </a></li>
+                    <li th:if="${pageNumber != 1}" class="page-item"><a class="page-link" href="#"  aria-label="Previous" th:href="${'?page=' + (pageNumber - 1)}"> &laquo; </a></li>
                     <th:block th:each="i: ${#numbers.sequence(1, pageTotal)}">
-                    <li th:if="${pageNumber == i}" class="page-item active"><a class="page-link" href="#" th:href="@{/questions/(page=${i})}" th:text="${i}">1</a></li>
-                    <li th:if="${pageNumber != i}" class="page-item"><a class="page-link" href="#" th:href="@{/questions/(page=${i})}" th:text="${i}">1</a></li>
+                    <li th:if="${pageNumber == i}" class="page-item active"><a class="page-link" href="#" th:href="${'?page=' + i}" th:text="${i}">1</a></li>
+                    <li th:if="${pageNumber != i}" class="page-item"><a class="page-link" href="#" th:href="${'?page=' + i}" th:text="${i}">1</a></li>
                     </th:block>
                     <li th:if="${pageNumber == pageTotal}" class="page-item disabled"><a class="page-link" href="#" aria-label="Next"> &raquo; </a></li>
-                    <li th:if="${pageNumber != pageTotal}" class="page-item"><a class="page-link" href="#" aria-label="Next" th:href="@{/questions/(page=${pageNumber}+1)}"> &raquo; </a></li>
+                    <li th:if="${pageNumber != pageTotal}" class="page-item"><a class="page-link" href="#" aria-label="Next" th:href="${'?page=' + (pageNumber + 1)}"> &raquo; </a></li>
                 </ul>
             </nav>
         </div>

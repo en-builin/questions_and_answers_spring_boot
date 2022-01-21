@@ -14,7 +14,8 @@ public class SecurityUtils {
             WebUtils.URL_SIGN_UP,
             WebUtils.URL_QUESTION_PAGE + "/**",
             WebUtils.URL_QUESTIONS,
-            WebUtils.URL_QUESTIONS + "/**"
+            WebUtils.URL_QUESTIONS + "/**",
+            WebUtils.URL_TOPICS + "/**"
     };
 
     public static final String[] AUTHENTICATED_URLS = {
@@ -24,7 +25,7 @@ public class SecurityUtils {
     };
 
     public static final String[] ADMIN_URLS = {
-            WebUtils.URL_TOPICS + "/**"
+            WebUtils.URL_EDIT_TOPICS + "/**"
 //            "/projects"
     };
 
