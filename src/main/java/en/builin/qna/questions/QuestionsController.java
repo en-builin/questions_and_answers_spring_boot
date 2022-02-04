@@ -5,6 +5,7 @@
 package en.builin.qna.questions;
 
 import en.builin.qna.security.config.UserDetailsImpl;
+import en.builin.qna.topics.Topic;
 import en.builin.qna.topics.TopicsMapper;
 import en.builin.qna.topics.TopicsService;
 import en.builin.qna.utils.WebUtils;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -50,20 +52,23 @@ public class QuestionsController {
 
         model.addAttribute("questionCreateDto", new QuestionCreateDto());
         model.addAttribute("topicsDto", topicsMapper.toDto(topicsService.getTopics()));
+
         return "add-question";
     }
 
     @GetMapping(WebUtils.URL_QUESTIONS)
     public String showQuestionsPage(@RequestParam(value = "page", defaultValue = "1") int pageNumber, Model model) {
 
+        List<Question> questions = questionsService.findQuestionsByPage(pageNumber);
+        int pageTotal = questionsService.getPagesTotalCount();
+
         if (!model.containsAttribute("isIndexPage")) {
             model.addAttribute("isIndexPage", false);
         }
         model.addAttribute("topicsDto", topicsMapper.toDto(topicsService.getTopics()));
-        model.addAttribute("questionsDto",
-                questionsMapper.toDto(questionsService.findQuestionsByPage(pageNumber)));
+        model.addAttribute("questionsDto", questionsMapper.toDto(questions));
         model.addAttribute("pageNumber", pageNumber);
-        model.addAttribute("pageTotal", questionsService.getPagesTotalCount());
+        model.addAttribute("pageTotal", pageTotal);
 
         return "questions";
     }
@@ -73,15 +78,16 @@ public class QuestionsController {
                                            @RequestParam(value = "page", defaultValue = "1") int pageNumber,
                                            Model model) {
 
+        Topic currentTopic = topicsService.getTopicById(WebUtils.getIdFromUrl(topicUrlId));
+        List<Question> questions = questionsService.findQuestionsByTopicAndPage(currentTopic, pageNumber);
+        int pageTotal = questionsService.getPagesTotalCountByTopic(currentTopic);
+
         model.addAttribute("isIndexPage", false);
         model.addAttribute("topicsDto", topicsMapper.toDto(topicsService.getTopics()));
-        model.addAttribute("questionsDto",
-                questionsMapper.toDto(
-                        questionsService.findQuestionsByTopicAndPage(
-                                topicsService.getTopicById(WebUtils.getIdFromUrl(topicUrlId)),
-                                pageNumber)));
+        model.addAttribute("questionsDto", questionsMapper.toDto(questions));
+        model.addAttribute("currentTopic", topicsMapper.toDto(currentTopic));
         model.addAttribute("pageNumber", pageNumber);
-        model.addAttribute("pageTotal", questionsService.getPagesTotalCount());
+        model.addAttribute("pageTotal", pageTotal);
 
         return "questions";
     }

@@ -21,4 +21,6 @@ public interface QuestionsService {
     String getQuestionUrlName(Question question);
 
     Integer getPagesTotalCount();
+
+    Integer getPagesTotalCountByTopic(Topic topic);
 }

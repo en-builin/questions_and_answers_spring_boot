@@ -50,6 +50,13 @@ public class QuestionsServiceImpl implements QuestionsService {
 
     @Override
     public Integer getPagesTotalCount() {
-        return (int) Math.ceil((double) questionsRepository.countByDeletedIsNull() / PAGE_SIZE);
+        int result = (int) Math.ceil((double) questionsRepository.countByDeletedIsNull() / PAGE_SIZE);
+        return Math.max(result, 1);
+    }
+
+    @Override
+    public Integer getPagesTotalCountByTopic(Topic topic) {
+        int result = (int) Math.ceil((double) questionsRepository.countByDeletedIsNullAndTopicIs(topic) / PAGE_SIZE);
+        return Math.max(result, 1);
     }
 }
