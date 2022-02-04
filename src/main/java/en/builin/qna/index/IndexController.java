@@ -1,4 +1,8 @@
-package en.builin.qna;
+/*
+ * Copyright (c) 2022. Evgeniy Buylin
+ */
+
+package en.builin.qna.index;
 
 import en.builin.qna.questions.QuestionsController;
 import en.builin.qna.utils.WebUtils;
@@ -18,6 +22,8 @@ public class IndexController {
 
     @GetMapping
     public String getIndexPage(@RequestParam(value = "page", defaultValue = "1") int pageNumber, Model model) {
+
+        model.addAttribute("isIndexPage", true);
 
         return questionsController.showQuestionsPage(pageNumber, model);
     }
