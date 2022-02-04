@@ -73,19 +73,24 @@
                 </div>
             </form>
 
-            <ul class="list-group list-group-flush mb-4">
-                <li class="list-group-item h5 mb-0">Разработка 1C</li>
+            <div class="mb-3">
+                <a class="btn btn-primary btn-lg w-100" href="#" th:href="@{/add-question}"><i class="bi-plus-circle"></i> Добавить
+                    вопрос</a>
+            </div>
+
+            <div class="list-group list-group-flush mb-4">
+                <a class="list-group-item" href="#" th:href="@{/questions}"><b>Разработка 1C</b></a></li>
                 <div class="list-group list-group-flush ps-3">
                     <!--/*-->
                     <!--                    <a class="list-group-item d-flex justify-content-between align-items-center"-->
                     <!--                       href="#">Регистры накопления<span class="badge bg-secondary rounded-pill">14</span></a>-->
                     <!--*/-->
                     <th:block  th:each="topicDto : ${topicsDto}">
-                    <a class="list-group-item d-flex justify-content-between align-items-center"
-                       href="#" th:href="@{/t/{id}(id=${topicDto.url})}" th:text="${topicDto.name}">Регистры бухгалтерии</a>
+                        <a class="list-group-item d-flex justify-content-between align-items-center"
+                           href="#" th:href="@{/t/{id}(id=${topicDto.url})}" th:text="${topicDto.name}">Регистры бухгалтерии</a>
                     </th:block>
                 </div>
-            </ul>
+            </div>
 
 <!--/*-->
             <h5>Тэги</h5>

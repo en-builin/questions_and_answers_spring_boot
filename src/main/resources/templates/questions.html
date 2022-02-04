@@ -18,7 +18,7 @@
 <body>
 
 <main class="container">
-    <div class="mb-5" layout:fragment="content-title" th:if="${pageNumber == 1}">
+    <div class="mb-5" layout:fragment="content-title" th:if="${isIndexPage && pageNumber == 1}">
         <h1>
             Вопросы на знание механизмов платформы 1С:Предприятие с ответами для
             подготовки к собеседованиям и проверки своих знаний
@@ -26,11 +26,6 @@
     </div>
     <div class="row">
         <div class="col-lg-8 mb-4" layout:fragment="content">
-            <div class="mb-3">
-                <a class="btn btn-primary btn-lg" href="#" th:href="@{/add-question}"><i class="bi-plus-circle"></i> Добавить
-                    вопрос</a>
-            </div>
-
             <th:block th:each="questionDTO : ${questionsDto}">
                 <div class="card mb-3">
                     <div class="card-header">

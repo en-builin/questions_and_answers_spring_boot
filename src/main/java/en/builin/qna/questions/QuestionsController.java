@@ -56,6 +56,9 @@ public class QuestionsController {
     @GetMapping(WebUtils.URL_QUESTIONS)
     public String showQuestionsPage(@RequestParam(value = "page", defaultValue = "1") int pageNumber, Model model) {
 
+        if (!model.containsAttribute("isIndexPage")) {
+            model.addAttribute("isIndexPage", false);
+        }
         model.addAttribute("topicsDto", topicsMapper.toDto(topicsService.getTopics()));
         model.addAttribute("questionsDto",
                 questionsMapper.toDto(questionsService.findQuestionsByPage(pageNumber)));
@@ -70,6 +73,7 @@ public class QuestionsController {
                                            @RequestParam(value = "page", defaultValue = "1") int pageNumber,
                                            Model model) {
 
+        model.addAttribute("isIndexPage", false);
         model.addAttribute("topicsDto", topicsMapper.toDto(topicsService.getTopics()));
         model.addAttribute("questionsDto",
                 questionsMapper.toDto(
