@@ -1,6 +1,6 @@
 package en.builin.qna.questions;
 
-import en.builin.qna.categories.Category;
+import en.builin.qna.topics.Topic;
 import en.builin.qna.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,13 +28,13 @@ public class Question {
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
     @ManyToOne
-    @JoinColumn(name="category_id", nullable = false)
-    private Category category;
+    @JoinColumn(name="topic_id", nullable = false)
+    private Topic topic;
     @Column(length = 1024)
     private String text;
-    private String source;
     @CreationTimestamp
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
+    private Boolean deleted;
 }

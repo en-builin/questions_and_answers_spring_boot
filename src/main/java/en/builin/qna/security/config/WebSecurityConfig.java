@@ -1,7 +1,7 @@
 package en.builin.qna.security.config;
 
-import en.builin.qna.utlis.SecurityUtils;
-import en.builin.qna.utlis.WebUtils;
+import en.builin.qna.security.SecurityUtils;
+import en.builin.qna.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -44,16 +44,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
                 http
                         .authorizeRequests()
+                        .antMatchers(SecurityUtils.PERMITED_URLS).permitAll()
                         .antMatchers(SecurityUtils.AUTHENTICATED_URLS).authenticated()
                         .antMatchers(SecurityUtils.ADMIN_URLS).hasAuthority("ADMIN")
                         .antMatchers(SecurityUtils.MODERATOR_URLS).hasAuthority("MODERATOR")
-                        .anyRequest().permitAll()
+                        .anyRequest().denyAll()
                         .and()
                 .formLogin()
-                        .loginPage(WebUtils.URL_INDEX)
+//                        .loginPage(WebUtils.URL_INDEX)
                         .loginProcessingUrl(WebUtils.URL_SIGN_IN)
-                        .defaultSuccessUrl("/", true)
-                        .failureUrl(WebUtils.URL_INDEX + "?signInError=true")
+//                        .defaultSuccessUrl(WebUtils.URL_INDEX)
+//                        .failureUrl(WebUtils.URL_INDEX + "?signInError=true")
                         .usernameParameter("email")
                         .passwordParameter("password")
                         .permitAll()
@@ -67,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .and()
                 .logout()
                         .logoutRequestMatcher(new AntPathRequestMatcher(WebUtils.URL_SIGN_OUT))
-                        .logoutSuccessUrl(WebUtils.URL_SIGN_IN)
+                        .logoutSuccessUrl(WebUtils.URL_INDEX)
                         .deleteCookies("JSESSIONID")
                         .invalidateHttpSession(true)
         ;

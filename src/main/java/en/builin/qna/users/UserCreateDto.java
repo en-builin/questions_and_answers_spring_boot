@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
-public class UserSignUpDto {
+public class UserCreateDto {
 
     @Email
     @NotBlank
@@ -17,5 +17,6 @@ public class UserSignUpDto {
     //TODO Имя не занято - сделать валидатор
     private String name;
     @NotBlank
+    //TODO минимальная длина = 6
     private String password;
 }
